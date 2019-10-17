@@ -1,4 +1,4 @@
-import { readStorage, setStorage } from './storage';
+import { readStorage, setStorage, removeFromStorage } from './storage';
 
 export const isAuth = () => {
   if (readStorage('isLogged') === true) {
@@ -9,4 +9,8 @@ export const isAuth = () => {
 
 export const setAuth = () => {
   setStorage('isLogged', true);
+};
+
+export const unsetAuth = () => {
+  removeFromStorage('isLogged');
 };

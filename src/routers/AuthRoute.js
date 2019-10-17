@@ -4,7 +4,6 @@ import { isAuth } from '../helpers/auth';
 
 const AuthRoute = props => {
   const { component: Component } = props;
-
   if (isAuth()) {
     return <Route component={Component} {...props} />;
   } else {

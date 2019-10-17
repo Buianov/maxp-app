@@ -6,7 +6,7 @@ import { Container, Form } from './index.style';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const LoginPage = ({ onLogin }) => {
+const LoginPage = ({ onLogin, auth: { error } }) => {
   let [login, setLogin] = useState('');
   let [pass, setPass] = useState('');
 
@@ -38,6 +38,7 @@ const LoginPage = ({ onLogin }) => {
           onChange={handleChange}
           type="password"
         />
+        {error}
         <Button variant="contained" color="primary" onClick={onSubmit} disabled={!login || !pass}>
           Submit
         </Button>
@@ -46,11 +47,17 @@ const LoginPage = ({ onLogin }) => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+  };
+};
+
 const mapDispatchToProps = {
   onLogin: login,
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(LoginPage);
