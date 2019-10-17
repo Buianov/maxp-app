@@ -7,6 +7,7 @@ import ProfilePage from '../components/ProfilePage';
 import NotFound from '../components/NotFound';
 import MainPage from '../components/MainPage';
 import Header from '../components/Header';
+import AuthRoute from './AuthRoute';
 
 const MainRounter = () => {
   return (
@@ -14,7 +15,7 @@ const MainRounter = () => {
       <Header />
       <Switch>
         <Route path="/" exact component={MainPage} />
-        <Route path="/profile" component={ProfilePage} />
+        <AuthRoute path="/profile" component={ProfilePage} />
         <Route path="/news" component={NewsPage} />
         <Route path="/login" component={LoginPage} />
         <Route component={NotFound} />

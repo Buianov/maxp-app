@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
+
+import { Container } from './index.style';
 
 const LoginPage = () => {
-  return (<h1>Text</h1>)
-}
+  return <Container>Text</Container>;
+};
 
 export default LoginPage;
