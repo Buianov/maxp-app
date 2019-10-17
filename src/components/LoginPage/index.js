@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { login } from '../../actions/authActions';
 
 import { Container, Form } from './index.style';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {
   let [login, setLogin] = useState('');
   let [pass, setPass] = useState('');
 
@@ -21,6 +23,10 @@ const LoginPage = () => {
     }
   };
 
+  const onSubmit = () => {
+    onLogin({ login, pass });
+  };
+
   return (
     <Container>
       <Form>
@@ -32,7 +38,7 @@ const LoginPage = () => {
           onChange={handleChange}
           type="password"
         />
-        <Button variant="contained" color="primary" onClick={() => {}} disabled={!login || !pass}>
+        <Button variant="contained" color="primary" onClick={onSubmit} disabled={!login || !pass}>
           Submit
         </Button>
       </Form>
@@ -40,4 +46,11 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+const mapDispatchToProps = {
+  onLogin: login,
+};
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(LoginPage);
