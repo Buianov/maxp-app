@@ -6,3 +6,7 @@ export const HeaderContainer = styled.div`
   margin: 15px auto;
   justify-content: space-between;
 `;
+
+export const Flex = styled.div`
+  display: flex;
+`;

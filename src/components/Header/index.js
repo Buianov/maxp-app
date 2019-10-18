@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { HeaderContainer } from './index.style';
 import { Link } from 'react-router-dom';
+import { HeaderContainer } from './index.style';
 
 const Header = () => {
   const noUnderline = {

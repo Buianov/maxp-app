@@ -5,3 +5,7 @@ export const Container = styled.div`
   width: 800px;
   margin: 15px auto;
 `;
+
+export const Flex = styled.div`
+  display: flex;
+`;

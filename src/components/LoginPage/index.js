@@ -33,7 +33,9 @@ const LoginPage = ({ onLogin, auth: { error } }) => {
   return (
     <Container>
       {redirect}
+
       <Form>
+        <div>Use Admin \ 12345 to enter</div>
         <TextField id="login" label="Login" value={loginValue} onChange={handleChange} />
         <TextField
           id="pass"

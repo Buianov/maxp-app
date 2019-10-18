@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-const NewsPage = () => {
-  return (<h1>Text</h1>)
-}
+const NewsPage = () => <h1>Text</h1>;
 
 export default NewsPage;

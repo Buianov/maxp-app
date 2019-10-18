@@ -9,19 +9,17 @@ import MainPage from '../components/MainPage';
 import Header from '../components/Header';
 import AuthRoute from './AuthRoute';
 
-const MainRounter = () => {
-  return (
-    <Router>
-      <Header />
-      <Switch>
-        <Route path="/" exact component={MainPage} />
-        <AuthRoute path="/profile" component={ProfilePage} />
-        <Route path="/news" component={NewsPage} />
-        <Route path="/login" component={LoginPage} />
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
-  );
-};
+const MainRounter = () => (
+  <Router>
+    <Header />
+    <Switch>
+      <Route path="/" exact component={MainPage} />
+      <AuthRoute path="/profile" component={ProfilePage} />
+      <Route path="/news" component={NewsPage} />
+      <Route path="/login" component={LoginPage} />
+      <Route component={NotFound} />
+    </Switch>
+  </Router>
+);
 
 export default MainRounter;
