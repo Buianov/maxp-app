@@ -14,7 +14,7 @@ const check = (login, pass) => {
   return false;
 };
 
-export const login = ({ login, pass }) => dispatch => {
+export const login = ({ login, pass }) => (dispatch) => {
   dispatch({ type: LOGIN_INIT });
 
   if (check(login, pass)) {
@@ -25,7 +25,7 @@ export const login = ({ login, pass }) => dispatch => {
   }
 };
 
-export const logout = () => dispatch => {
+export const logout = () => (dispatch) => {
   dispatch({ type: LOGOUT_INIT });
 
   unsetAuth();

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { login } from '../../actions/authActions';
 
 import { Container, Form } from './index.style';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const LoginPage = ({ onLogin, auth: { error } }) => {
+const LoginPage = ({ onLogin, auth: { error, isLogged } }) => {
+  const redirect = isLogged ? <Redirect to="/profile" /> : null;
   let [login, setLogin] = useState('');
   let [pass, setPass] = useState('');
 
@@ -29,6 +31,7 @@ const LoginPage = ({ onLogin, auth: { error } }) => {
 
   return (
     <Container>
+      {redirect}
       <Form>
         <TextField id="login" label="Login" value={login} onChange={handleChange} />
         <TextField
