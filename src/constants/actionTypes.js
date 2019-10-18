@@ -4,3 +4,7 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 
 export const LOGOUT_INIT = 'LOGOUT_INIT';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+
+export const FETCH_DATA_START = 'FETCH_DATA_START';
+export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
+export const FETCH_DATA_FAIL = 'FETCH_DATA_FAIL';
