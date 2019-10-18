@@ -14,12 +14,12 @@ const check = (login, pass) => {
   return false;
 };
 
-export const login = ({ login, pass }) => (dispatch) => {
+export const login = ({ login: loginName, pass }) => (dispatch) => {
   dispatch({ type: LOGIN_INIT });
 
-  if (check(login, pass)) {
+  if (check(loginName, pass)) {
     setAuth();
-    dispatch({ type: LOGIN_SUCCESS, username: login });
+    dispatch({ type: LOGIN_SUCCESS, username: loginName });
   } else {
     dispatch({ type: LOGIN_FAIL, error: 'Имя пользователя или пароль введены не верно ' });
   }

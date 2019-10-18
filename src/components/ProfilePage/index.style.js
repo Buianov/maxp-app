@@ -7,3 +7,7 @@ export const Container = styled.div`
   justify-content: space-between;
   flex-direction: column;
 `;
+
+export const Smth = styled.div`
+  display: flex;
+`;

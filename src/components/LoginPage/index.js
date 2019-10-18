@@ -1,48 +1,54 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { login } from '../../actions/authActions';
-
-import { Container, Form } from './index.style';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { login } from '../../actions/authActions';
+import { Container, Form } from './index.style';
+import { isAuth } from '../../helpers/auth';
 
-const LoginPage = ({ onLogin, auth: { error, isLogged } }) => {
-  const redirect = isLogged ? <Redirect to="/profile" /> : null;
-  let [login, setLogin] = useState('');
-  let [pass, setPass] = useState('');
+const LoginPage = ({ onLogin, auth: { error } }) => {
+  const redirect = isAuth() ? <Redirect to="/profile" /> : null;
+  const [loginValue, setLogin] = useState('');
+  const [passValue, setPass] = useState('');
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     switch (e.target.id) {
       case 'login':
         setLogin(e.target.value);
-        return;
+        break;
       case 'pass':
         setPass(e.target.value);
-        return;
+        break;
       default:
-        return;
+        break;
     }
   };
 
   const onSubmit = () => {
-    onLogin({ login, pass });
+    onLogin({ login: loginValue, pass: passValue });
   };
 
   return (
     <Container>
       {redirect}
       <Form>
-        <TextField id="login" label="Login" value={login} onChange={handleChange} />
+        <TextField id="login" label="Login" value={loginValue} onChange={handleChange} />
         <TextField
           id="pass"
           label="Password"
-          value={pass}
+          value={passValue}
           onChange={handleChange}
           type="password"
         />
         {error}
-        <Button variant="contained" color="primary" onClick={onSubmit} disabled={!login || !pass}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={onSubmit}
+          disabled={!loginValue || !passValue}
+        >
           Submit
         </Button>
       </Form>
@@ -50,14 +56,23 @@ const LoginPage = ({ onLogin, auth: { error, isLogged } }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    auth: state.auth,
-  };
-};
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
 const mapDispatchToProps = {
   onLogin: login,
+};
+
+LoginPage.defaultProps = {
+  auth: { error: '' },
+};
+
+LoginPage.propTypes = {
+  onLogin: PropTypes.func.isRequired,
+  auth: PropTypes.shape({
+    error: PropTypes.string,
+  }),
 };
 
 export default connect(
