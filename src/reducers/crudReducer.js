@@ -1,4 +1,4 @@
-import { FETCH_DATA_FAIL, FETCH_DATA_SUCCESS, FETCH_DATA_START } from '../constants/actionTypes';
+import { FETCH_DATA_FAIL, FETCH_DATA_SUCCESS } from '../constants/actionTypes';
 
 const initialState = { isError: false, error: '' };
 

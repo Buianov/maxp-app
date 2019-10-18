@@ -2,7 +2,6 @@ import { FETCH_DATA_FAIL, FETCH_DATA_SUCCESS, FETCH_DATA_START } from '../consta
 import { fetch } from '../helpers/rest';
 
 export const fetchCrud = (endpoint) => async (dispatch) => {
-  console.log(endpoint);
   dispatch({ type: FETCH_DATA_START });
 
   try {
