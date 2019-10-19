@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { fetchCrud } from '../../actions/crudActions';
 
 import { Container, NewsBlock, NewsElem } from './index.style';
@@ -15,11 +15,12 @@ const NewsPage = ({ fetch, posts }) => {
   return (
     <Container>
       <NewsBlock>
-        {posts && posts.slice(0, 20).map(({
+        {posts && posts.length > 0 && posts.slice(0, 20).map(({
           id, title, userId,
         }) => (
           <NewsElem key={id}>{title} by {userId}</NewsElem>
         ))}
+        {posts && posts.length === 0 && <CircularProgress />}
       </NewsBlock>
     </Container>
   );
@@ -35,7 +36,7 @@ const mapDispatchToProps = {
 };
 
 NewsPage.defaultProps = {
-  posts: [{}],
+  posts: [],
 };
 
 NewsPage.propTypes = {
